@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Task3H</string>
+    <string name="action_settings">Settings</string>
+    <string name="ba">Automatic Timer</string>
+    <string name="b3h">3 Hour Timer</string>
+    <string name="menu">Reset</string>
+    <string name="menuA">About</string>
+</resources>
