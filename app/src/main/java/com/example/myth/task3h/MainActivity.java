@@ -1,5 +1,6 @@
 package com.example.myth.task3h;
 
+import android.annotation.SuppressLint;
 import android.app.AlarmManager;
 import android.app.AlertDialog;
 import android.app.PendingIntent;
@@ -22,9 +23,10 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 
-import javax.security.auth.login.LoginException;
+//import javax.security.auth.login.LoginException;
 
 public class MainActivity extends AppCompatActivity {
+    @SuppressLint("StaticFieldLeak")
     private static MainActivity ins;
     private Button b3h, ba;
     private TextView tv;
