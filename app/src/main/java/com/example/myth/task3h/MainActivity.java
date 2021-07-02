@@ -5,7 +5,6 @@ import android.app.AlarmManager;
 import android.app.AlertDialog;
 import android.app.PendingIntent;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Bundle;
@@ -14,7 +13,6 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -72,54 +70,50 @@ public class MainActivity extends AppCompatActivity {
 
     private void ma() {
         ba = findViewById(R.id.ba);
-        ba.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                Log.d("TAG", "ba clicked");
-                MainActivity.instance().setTitle("AUTOMATIC");
-                b3h.setClickable(false);
-                ba.setClickable(false);
-                SimpleDateFormat sdf = new SimpleDateFormat("HH:mm a", Locale.getDefault());
-                Date d1 = new Date(System.currentTimeMillis());
-                Date d2 = new Date(System.currentTimeMillis() + 10_800_000);
-                Date d3 = new Date(System.currentTimeMillis() + 21_600_000);
-                Date d4 = new Date(System.currentTimeMillis() + 32_400_000);
-                Date d5 = new Date(System.currentTimeMillis() + 43_200_000);
-                String s1 = sdf.format(d1);
-                String s2 = sdf.format(d2);
-                String s4 = sdf.format(d3);
-                String s5 = sdf.format(d4);
-                String s6 = sdf.format(d5);
-                String s = "\nLook at schedule.\n" + "Start time: " + s1 + "\nEnd time: " + s2
-                        + "\n" + "\nTask 1: completed.\n" + "Task 2: " + s2 + "\nTask 3: "
-                        + s4 + "\nTask 4: " + s5 + "\nTask 5: " + s6;
-                tv.setText(s);
-                int in = 10_740_000; // 3h
-                //int in = 10000;
-                am.setRepeating(AlarmManager.RTC_WAKEUP, System.currentTimeMillis() + 10_740_000, in, pi);
-                Toast.makeText(MainActivity.this, "Alarm Set", Toast.LENGTH_SHORT).show();
-            }
+        ba.setOnClickListener(v -> {
+            Log.d("TAG", "ba clicked");
+            MainActivity.instance().setTitle("AUTOMATIC");
+            b3h.setClickable(false);
+            ba.setClickable(false);
+            SimpleDateFormat sdf = new SimpleDateFormat("HH:mm a", Locale.getDefault());
+            Date d1 = new Date(System.currentTimeMillis());
+            Date d2 = new Date(System.currentTimeMillis() + 10_800_000);
+            Date d3 = new Date(System.currentTimeMillis() + 21_600_000);
+            Date d4 = new Date(System.currentTimeMillis() + 32_400_000);
+            Date d5 = new Date(System.currentTimeMillis() + 43_200_000);
+            String s1 = sdf.format(d1);
+            String s2 = sdf.format(d2);
+            String s4 = sdf.format(d3);
+            String s5 = sdf.format(d4);
+            String s6 = sdf.format(d5);
+            String s = "\nLook at schedule.\n" + "Start time: " + s1 + "\nEnd time: " + s2
+                    + "\n" + "\nTask 1: completed.\n" + "Task 2: " + s2 + "\nTask 3: "
+                    + s4 + "\nTask 4: " + s5 + "\nTask 5: " + s6;
+            tv.setText(s);
+            int in = 10_740_000; // 3h
+            //int in = 10000;
+            am.setRepeating(AlarmManager.RTC_WAKEUP, System.currentTimeMillis() + 10_740_000, in, pi);
+            Toast.makeText(MainActivity.this, "Alarm Set", Toast.LENGTH_SHORT).show();
         });
     }
 
     private void m3h() {
         b3h = findViewById(R.id.b3h);
-        b3h.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                MainActivity.instance().setTitle("3 HOUR");
-                SimpleDateFormat sdf = new SimpleDateFormat("HH:mm a", Locale.getDefault());
-                Date d1 = new Date(System.currentTimeMillis());
-                String s1 = sdf.format(d1);
-                Date d2 = new Date(System.currentTimeMillis() + 10_800_000);
-                String s2 = sdf.format(d2);
-                s3 = "\12Start time: " + s1 + "\12End time: " + s2;
-                tv.setText(s3);
-                ba.setClickable(false);
-                b3h.setClickable(false);
-                //int in = 10_800_000; // 3h
-                int in = 20_000;
-                am.setExact(AlarmManager.RTC_WAKEUP, System.currentTimeMillis() + in, pi);
-                Toast.makeText(MainActivity.this, "Alarm Set", Toast.LENGTH_SHORT).show();
-            }
+        b3h.setOnClickListener(v -> {
+            MainActivity.instance().setTitle("3 HOUR");
+            SimpleDateFormat sdf = new SimpleDateFormat("HH:mm a", Locale.getDefault());
+            Date d1 = new Date(System.currentTimeMillis());
+            String s1 = sdf.format(d1);
+            Date d2 = new Date(System.currentTimeMillis() + 10_800_000);
+            String s2 = sdf.format(d2);
+            s3 = "\12Start time: " + s1 + "\12End time: " + s2;
+            tv.setText(s3);
+            ba.setClickable(false);
+            b3h.setClickable(false);
+            //int in = 10_800_000; // 3h
+            int in = 20_000;
+            am.setExact(AlarmManager.RTC_WAKEUP, System.currentTimeMillis() + in, pi);
+            Toast.makeText(MainActivity.this, "Alarm Set", Toast.LENGTH_SHORT).show();
         });
     }
 
@@ -133,19 +127,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void updateText(final String t) {
-        MainActivity.this.runOnUiThread(new Runnable() {
-            public void run() {
-                tv.setText(t);
-            }
-        });
+        MainActivity.this.runOnUiThread(() -> tv.setText(t));
     }
 
     void sound() {
-        MainActivity.this.runOnUiThread(new Runnable() {
-            public void run() {
-                mp = MediaPlayer.create(MainActivity.this, R.raw.alarm);
-                mp.start();
-            }
+        MainActivity.this.runOnUiThread(() -> {
+            mp = MediaPlayer.create(MainActivity.this, R.raw.alarm);
+            mp.start();
         });
     }
 
@@ -164,11 +152,7 @@ public class MainActivity extends AppCompatActivity {
         adb.setTitle("Are you sure you want to exit?");
         adb.setCancelable(false);
         adb.setMessage("Timer will be stopped.");
-        adb.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog, int which) {
-                MainActivity.this.finish();
-            }
-        });
+        adb.setPositiveButton("OK", (dialog, which) -> MainActivity.this.finish());
         adb.setNegativeButton("Cancel", null);
         adb.show();
     }
