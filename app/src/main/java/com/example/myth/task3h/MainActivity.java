@@ -54,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
 
         am = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
         Intent i = new Intent(getApplicationContext(), Alarm.class);
-        pi = PendingIntent.getBroadcast(getApplicationContext(), 0, i, 0);
+        pi = PendingIntent.getBroadcast(getApplicationContext(), 0, i, PendingIntent.FLAG_IMMUTABLE);
 
         ins = this;
         m3h();
@@ -110,8 +110,8 @@ public class MainActivity extends AppCompatActivity {
             tv.setText(s3);
             ba.setClickable(false);
             b3h.setClickable(false);
-            //int in = 10_800_000; // 3h
-            int in = 20_000;
+            int in = 10_800_000; // 3h
+//            int in = 20_000;
             am.setExact(AlarmManager.RTC_WAKEUP, System.currentTimeMillis() + in, pi);
             Toast.makeText(MainActivity.this, "Alarm Set", Toast.LENGTH_SHORT).show();
         });
