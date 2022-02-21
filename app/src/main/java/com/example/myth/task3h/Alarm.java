@@ -33,14 +33,14 @@ public class Alarm extends BroadcastReceiver {
         String s5 = sdf.format(d4);
         //String s6 = sdf.format(d5);
         String s7 = "\nLook at schedule.\n" + "Start time: " + s1 + "\12End time: " + s8
-                + "\n" + "\nTask 1: completed.\n" + "Task 2: completed.\n" + "Task 3: "
+                + "\n" + "\nTask 1: completed.\n" + "Task 2: running.\n" + "Task 3: "
                 + s8 + "\nTask 4: " + s4 + "\nTask 5: " + s5;
         String s9 = "\nLook at schedule.\n" + "Start time: " + s1 + "\nEnd time: " + s8
-                + "\n" + "\nTask 1: completed.\n" + "Task 2: completed.\n" + "Task 3: completed.\n"
+                + "\n" + "\nTask 1: completed.\n" + "Task 2: completed.\n" + "Task 3: running.\n"
                 + "Task 4: " + s8 + "\nTask 5: " + s4;
         String s10 = "\nLook at schedule.\n" + "Start time: " + s1 + "\nEnd time: " + s8
                 + "\n" + "\nTask 1: completed.\n" + "Task 2: completed.\n" + "Task 3: completed.\n"
-                + "Task 4: completed." + "\nTask 5: " + s8;
+                + "Task 4: running." + "\nTask 5: " + s8;
         String s11 = "\nStatus: Final timing for today!";
 
         //  public void foo(View v){

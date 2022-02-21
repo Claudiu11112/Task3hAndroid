@@ -87,12 +87,12 @@ public class MainActivity extends AppCompatActivity {
             String s5 = sdf.format(d4);
             String s6 = sdf.format(d5);
             String s = "\nLook at schedule.\n" + "Start time: " + s1 + "\nEnd time: " + s2
-                    + "\n" + "\nTask 1: completed.\n" + "Task 2: " + s2 + "\nTask 3: "
+                    + "\n" + "\nTask 1: running.\n" + "Task 2: " + s2 + "\nTask 3: "
                     + s4 + "\nTask 4: " + s5 + "\nTask 5: " + s6;
             tv.setText(s);
             int in = 10_740_000; // 3h
-            //int in = 10000;
-            am.setRepeating(AlarmManager.RTC_WAKEUP, System.currentTimeMillis() + 10_740_000, in, pi);
+//            int in = 60_000;
+            am.setRepeating(AlarmManager.RTC_WAKEUP, System.currentTimeMillis() + in, in, pi);
             Toast.makeText(MainActivity.this, "Alarm Set", Toast.LENGTH_SHORT).show();
         });
     }
@@ -111,7 +111,7 @@ public class MainActivity extends AppCompatActivity {
             ba.setClickable(false);
             b3h.setClickable(false);
             int in = 10_800_000; // 3h
-//            int in = 20_000;
+//            int in = 60_000;
             am.setExact(AlarmManager.RTC_WAKEUP, System.currentTimeMillis() + in, pi);
             Toast.makeText(MainActivity.this, "Alarm Set", Toast.LENGTH_SHORT).show();
         });
@@ -136,7 +136,6 @@ public class MainActivity extends AppCompatActivity {
             mp.start();
         });
     }
-
 //    protected void onPause() {
 //        super.onPause();
 //        if (mp != null) {
@@ -144,7 +143,6 @@ public class MainActivity extends AppCompatActivity {
 //            mp = null;
 //        }
 //    }
-
     @Override
     public void onBackPressed() {
         //super.onBackPressed();
