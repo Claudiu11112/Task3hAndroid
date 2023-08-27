@@ -112,7 +112,7 @@ public class MainActivity extends AppCompatActivity {
             b3h.setClickable(false);
             int in = 10_800_000; // 3h
 //            int in = 60_000;
-            am.setExact(AlarmManager.RTC_WAKEUP, System.currentTimeMillis() + in, pi);
+            am.set(AlarmManager.RTC_WAKEUP, System.currentTimeMillis() + in, pi);
             Toast.makeText(MainActivity.this, "Alarm Set", Toast.LENGTH_SHORT).show();
         });
     }
