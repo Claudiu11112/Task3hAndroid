@@ -8,8 +8,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Bundle;
-//import android.support.v7.app.AppCompatActivity;
-//import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -17,28 +15,29 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-//import javax.security.auth.login.LoginException;
 
 public class MainActivity extends AppCompatActivity {
     @SuppressLint("StaticFieldLeak")
     private static MainActivity ins;
+    AlarmManager am;
+    PendingIntent pi;
     private Button b3h, ba;
     private TextView tv;
     private String s3;
     private MediaPlayer mp;
-    AlarmManager am;
-    PendingIntent pi;
 
     public static MainActivity instance() {
         if (ins == null)
             ins = new MainActivity();
         return ins;
     }
+
     @Override
     public void onStart() {
         super.onStart();
@@ -137,7 +136,8 @@ public class MainActivity extends AppCompatActivity {
             mp.start();
         });
     }
-//    protected void onPause() {
+
+    //    protected void onPause() {
 //        super.onPause();
 //        if (mp != null) {
 //            mp.release();
@@ -174,7 +174,7 @@ public class MainActivity extends AppCompatActivity {
         } else if (item.getItemId() == R.id.menuA) {
             AlertDialog.Builder adb = new AlertDialog.Builder(this);
             adb.setPositiveButton("OK", null);
-            adb.setTitle("Timer v1.6");
+            adb.setTitle("Timer v1.8");
             adb.setMessage("Development: Stark C.");
             AlertDialog ad = adb.create();
             ad.show();
